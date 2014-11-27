@@ -1,0 +1,10 @@
+[general]
+
+name:Address to Xy
+qgisMinimumVersion:2.0
+description:Takes in an attribute table with address values and adds lat / long values
+version:0.1
+author:Barry Warnock
+email:warnock@unbc.ca
+
+
