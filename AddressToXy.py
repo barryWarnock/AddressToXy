@@ -25,6 +25,7 @@ import resources
 # Import the code for the dialog
 from AddressToXyDialog import AddressToXyDialog
 
+#This class is the entrance point for QGis
 class AddressToXy: 
 
   def __init__(self, iface):
@@ -34,25 +35,28 @@ class AddressToXy:
   def initGui(self):  
     # Create action that will start plugin configuration
     self.action = QAction(QIcon(":/plugins/AddressToXy/icon.png"), \
-        "A-XY", self.iface.mainWindow())
+        "Address To Xy", self.iface.mainWindow())
     # connect the action to the run method
     QObject.connect(self.action, SIGNAL("activated()"), self.run) 
     # Add toolbar button and menu item
     self.iface.addToolBarIcon(self.action)
-    self.iface.addPluginToMenu("&A-XY", self.action)
+    self.iface.addPluginToMenu("&Address To Xy", self.action)
 
   def unload(self):
     # Remove the plugin menu item and icon
-    self.iface.removePluginMenu("&A-XY",self.action)
+    self.iface.removePluginMenu("&Address To Xy",self.action)
     self.iface.removeToolBarIcon(self.action)
 
-  # run method that performs all the real work
+  # run method that is called after initialization
   def run(self): 
-    # create and show the dialog
-    dlg = AddressToXyDialog(self) 
+    #create and show the dialog I passes the
+    #of the qgisInterface to AddressToXyDialog
+    #so that it could access the active layers
+    dlg = AddressToXyDialog(self.iface) 
     # show the dialog
     dlg.show()
-    result = dlg.exec_() 
-    # See if OK was pressed
-    #if result == 1: 
-     # print "got that"
+    #control is handed over to AddressToXyDialog
+    #I did this so that the main code could be 
+    #closer to the Qt interface
+    dlg.exec_() 
+    
