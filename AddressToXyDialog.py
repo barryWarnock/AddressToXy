@@ -26,10 +26,10 @@ from qgis.core import *
 
 #uses an address to create a url to use to retrieve lat long values
 def addressToUrl(address):
-        url = "https://apps.gov.bc.ca/pub/geocoder/addresses.geojson?addressString="
-	url += address	
-        urlReturn = urllib.urlopen(url)
-        return urlReturn
+		url = "https://apps.gov.bc.ca/pub/geocoder/addresses.geojson?addressString="
+		url += address
+		urlReturn = urllib.urlopen(url)
+		return urlReturn
 
 #takes a url and returns a json
 def urlToJson(url):
@@ -40,6 +40,8 @@ def urlToJson(url):
 def addressToXy(address):
         url = addressToUrl(address)
         data = urlToJson(url)
+        print(address);
+        print(data['features'][0]['geometry']['coordinates']);
         return data['features'][0]['geometry']['coordinates']
 
 #pulls the addresses out of the full 2d list by taking everything under the attribute with the given name
@@ -51,7 +53,7 @@ def getAddressList(fullList, attributeName):
 	addressList = []
 	#takes whatever is in that column in every other row	
 	for row in range(len(fullList)-1):
-		addressList.append(fullList[row+1][addressRow])
+		addressList.append(fullList[row+1][addressRow] if fullList[row+1][addressRow] else "")
 	return addressList
 
 #uses addressToXy on every element in the given list of addresses
@@ -147,5 +149,4 @@ class AddressToXyDialog(QtGui.QDialog):
   def AddressSelect(self, i):
 	  self.selectedAttribute = i
 	  self.attributeIsSelected = 1
-
 
