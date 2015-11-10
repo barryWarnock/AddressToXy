@@ -40,7 +40,6 @@ def urlToJson(url):
 def addressToXy(address):
         url = addressToUrl(address)
         data = urlToJson(url)
-        print(address);
         print(data['features'][0]['geometry']['coordinates']);
         return data['features'][0]['geometry']['coordinates']
 
