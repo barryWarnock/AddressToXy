@@ -58,7 +58,7 @@ class Ui_AddressToXy(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "AddressToXy", None, QtGui.QApplication.UnicodeUTF8))
         self.Ok_button.setText(QtGui.QApplication.translate("MainWindow", "Ok", None, QtGui.QApplication.UnicodeUTF8))
-        self.Cancle_button.setText(QtGui.QApplication.translate("MainWindow", "Cancle", None, QtGui.QApplication.UnicodeUTF8))
+        self.Cancle_button.setText(QtGui.QApplication.translate("MainWindow", "Cancel", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("MainWindow", ".csv file ", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("MainWindow", "Address Column", None, QtGui.QApplication.UnicodeUTF8))
 
